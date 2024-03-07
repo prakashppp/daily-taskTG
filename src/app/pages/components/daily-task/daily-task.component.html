@@ -1,0 +1,103 @@
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <form [formGroup]="nForm" method="post">
+      <!-- <div class="card" style="text-align: center;">
+        <div class="card-body"> -->
+      <div class="col-12">
+        <div class="row justify-content-center">
+          <div class="col-6 mb-3">
+            <b>
+              <label>Date:</label>
+              {{ todaysDate | date : "dd/MM/yyyy" }}</b
+            >
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Employee Name</label
+              >&nbsp;&nbsp;
+             
+              <label *ngFor="let d of userf">
+                {{d.Name | uppercase}}
+              </label>
+              
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+          
+          <div class="col-8">
+            <label>Add Daily Tasks</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="enteredLabel"
+              formControlName="tasks"
+            />
+          </div>
+          <div class="col-2">
+            <label></label>
+            <div class="d-grid">
+              <button class="btn btn-success" [disabled]="nForm.invalid" (click)="onAddTask()">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+        <!-- </div>
+      </div> -->
+      <div *ngIf="dailyTasks.length > 0">
+        <div>
+          <div class="ss">
+          <table class="table table-striped-columns" style="text-align: center">
+            <thead>
+              <tr>
+                <th scope="col">Sr.no</th>
+                <th scope="col">Tasks</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+
+            <tbody *ngFor="let task of dailyTasks; let i = index">
+              <tr>
+                <td>{{ i + 1 }}</td>
+                <td>{{ task }}</td>
+                <td class="iconwidth">
+                  <button type="button" class="btn" (click)="edit(task, i)">
+                    <i class="bi bi-pencil-fill small-icon"></i></button
+                  >
+                  <button type="button" class="btn" (click)="deleteTask(i)">
+                    <i class="bi bi-trash3-fill small-icon"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+        <br />
+        <div class="dd">
+          <button
+            class="btn btn-primary right-align"
+            
+            type="submit"
+            
+            (click)="addTasks()"
+          >
+            Submit
+          </button>
+          `
+        </div>
+      </div>
+   
+  </div>
+</div>
+
+
+<!-- <button (click)="decodeToken()">Click</button> -->
+

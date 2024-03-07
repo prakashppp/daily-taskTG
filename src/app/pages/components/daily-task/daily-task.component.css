@@ -1,0 +1,32 @@
+.dd {
+    text-align: right;
+}
+.ss{
+    max-height: 300px; 
+    overflow: auto;
+}
+
+.iconsize {
+    font-size: 1rem;
+  }
+
+@media screen and (max-width:500px) {
+    .ss{
+        font-size:0.5rem ;
+      }
+    .dd{
+        .btn{
+            font-size: 0.8rem;
+        }
+    }
+   
+    .small-icon{
+        font-size: 0.5rem;
+    }
+    .iconwidth{
+        width: 90px;
+    }
+    table{
+        text-align: left;
+    }
+}

@@ -1,0 +1,190 @@
+<div class="content">
+        <div class="noOfProject">
+          <b>No of Projects : {{ projectData.length }}</b>
+        </div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-auto">
+              <!-- <button class="btn btn-primary">First Button</button> -->
+              <div class="searchdesign">
+                <input
+                  type="text"
+                  [(ngModel)]="searchName"
+                  (input)="filterName()"
+                  placeholder="Search by Name"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <!-- Empty div to stretch and push the second button to the right -->
+            </div>
+            <div class="col-auto">
+              <!-- <button class="btn btn-secondary">Second Button</button> -->
+              <button
+                class="btn btn-success"
+                (click)="open(content)"
+                (click)="clickAddProject()"
+              >
+                Add Project
+              </button>
+            </div>
+          </div>
+        </div>
+
+       
+        <br />
+        <div class="ss">
+        <table class="table table-striped-columns">
+          <thead>
+            <tr>
+              <th scope="col">Sr.no</th>
+              <th scope="col">Project Name</th>
+              <th scope="col">Team Lead</th>
+              <th scope="col">Start Date</th>
+              <th scope="col">Expected End Date</th>
+
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let data of projectDataf; let i = index">
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td routerLink="/home/emp-projects/{{data.name}}">{{ data.name | titlecase }}</td>
+              <td>{{ data.teamLead | titlecase }}</td>
+              <td>{{ data.startDate | date : "dd-MMM-YYYY" }}</td>
+              <td>{{ data.expectedEndDate | date : "dd-MMM-YYYY" }}</td>
+              <td class="iconwidth">
+                <button
+                  type="button"
+                  class="btn "
+                  (click)="edit(data)"
+                  (click)="open(content)" 
+                >
+                  <i class="bi bi-pencil-fill iconsize"></i>
+                </button>
+                <button type="button" class="btn" (click)="deleteProject(data)">
+                  <i class="bi bi-trash3-fill iconsize"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <ng-template #content let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Records</h4>
+            <button
+              type="button"
+              class="btn-close"
+              aria-label="Close"
+              (click)="modal.dismiss('Cross click')"
+              (click)="resett()"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="mform">
+              <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input
+                  type="text"
+                  [class.is-invalid]="
+                    mform.get('name')?.invalid && mform.get('name')?.touched
+                  "
+                  class="form-control"
+                  formControlName="name"
+                />
+                <span
+                  [class.d-none]="
+                    mform.get('name')?.valid || mform.get('name')?.untouched
+                  "
+                  >Enter Valid name</span
+                >
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Team Lead</label>
+                
+                <select #ii 
+                  class="form-select"
+                  aria-label="Default select example"
+                  [(ngModel)]="teamLead"
+                  formControlName="teamLead"
+                >
+                  <option value="" disabled selected>Select</option>
+                 <option *ngFor="let data of userData" [value]="data.Name">{{data.Name}}</option>
+                </select>
+                
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Start Date</label>
+                <input
+                  type="date" [(ngModel)]="sdate"
+                  [class.is-invalid]="
+                    mform.get('startDate')?.invalid && mform.get('startDate')?.touched
+                  "
+                  class="form-control"
+                  formControlName="startDate"
+                  
+                />
+                <span
+                  [class.d-none]="
+                    mform.get('startDate')?.valid || mform.get('startDate')?.untouched
+                  "
+                  >Enter start Date</span
+                >
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Expected End Date</label>
+                <input
+                  type="date"
+                  [class.is-invalid]="
+                    mform.get('expectedEndDate')?.invalid && mform.get('expectedEndDate')?.touched
+                  "
+                  class="form-control"
+                  formControlName="expectedEndDate"
+                />
+                <span
+                  [class.d-none]="
+                    mform.get('expectedEndDate')?.valid || mform.get('expectedEndDate')?.untouched
+                  "
+                  >Enter Expected End Date</span
+                >
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close('Save click')"
+              (click)="resett()"
+            >
+              Close
+            </button>
+            <button
+              *ngIf="showAdd"
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="createProject(mform.value)"
+              (click)="modal.close('Save click')"
+              [disabled]="!mform.valid"
+            >
+              Submit
+            </button>
+            <button
+              *ngIf="showupdate"
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="updateProject()"
+              (click)="modal.close('Save click')"
+            >
+              Update
+            </button>
+          </div>
+        </ng-template>
+
+</div>
+      

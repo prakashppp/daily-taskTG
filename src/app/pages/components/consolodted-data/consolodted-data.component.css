@@ -1,0 +1,16 @@
+.content {
+    height: 600px;
+    overflow: auto;
+  }
+
+  @media screen and (max-width:500px) {
+    .ss{
+        font-size:0.5rem ;
+        max-height: 390px; 
+        overflow: auto;
+      }
+    
+    .selectt{
+        font-size: 0.6rem;
+    }
+  }

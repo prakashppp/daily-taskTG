@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 mx-auto">
+      <!-- Content for the left column -->
+      <div class="p-3">
+        <select
+          class="form-select selectt"
+          aria-label="Default select example"
+          [(ngModel)]="userName"
+          (change)="search()"
+        >
+          <option value="" disabled selected>Select Name</option>
+          <option *ngFor="let data of userData" [value]="data.Name">
+            {{ data.Name | titlecase }}
+          </option></select
+        ><br />
+
+        <input
+          type="date"
+          [(ngModel)]="fdate"
+          class="dated"
+          (input)="search()"
+        />
+
+        <!-- <full-calendar [options]="calendarOptions"></full-calendar> -->
+      </div>
+    </div>
+    <div class="col-sm-6 mx-auto my-auto">
+      <!-- Content for the right column -->
+      <div class="p-3">
+        <div *ngIf="taskDataf.length > 0" class="card">
+          <div class="card-body">
+            <h1 class="card-title" style="text-align: center"><b>Tasks</b></h1>
+            <div
+              class="card-text"
+              *ngFor="let task of taskDataf; let i = index"
+            >
+              <ul *ngFor="let d of task.tasks; let j = index">
+                <li>{{ j + 1 }}: {{ d }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" *ngIf="taskDataf.length <= 0">
+          <div class="card-text">No Data Found</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <h1>calender</h1>
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="userName" (change)="search()">
+          <option value="" disabled selected>Select</option>
+          <option *ngFor="let data of userData" [value]="data.Name">
+            {{ data.Name }}
+          </option>
+        </select><br><br>
+
+        <input type="date" [(ngModel)]="fdate" class="dated" (input)="search()"  />
+        
+        <div *ngIf="taskDataf.length>0" class="card" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title">Tasks</h5>
+            <div class="card-text"*ngFor="let task of taskDataf; let i = index">
+              <ul *ngFor="let d of task.tasks; let j = index">
+                <li>{{ j + 1 }}: {{ d }}</li>
+              </ul>
+            </div>
+            </div>
+        </div>
+
+        <div class="card" *ngIf="taskDataf.length<=0">
+          <div class="card-text">
+            No Data Found
+          </div>
+        </div>
+        -->

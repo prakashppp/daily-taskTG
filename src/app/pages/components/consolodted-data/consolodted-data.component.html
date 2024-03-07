@@ -1,0 +1,58 @@
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            
+             <!-- <select
+            class="form-select selectt"
+            aria-label="Default select example"
+            [(ngModel)]="projectName"
+            (change)="search()"
+            >
+            <option *ngFor="let data of projectData; let first =first" [value]="data.name" [selected]="first" >
+              {{ data.name | titlecase }}
+            </option></select> 
+             -->
+             <select
+             class="form-select selectt"
+             aria-label="Default select example"
+             [(ngModel)]="projectName"
+             (change)="search()"
+            
+         >
+             <option *ngFor="let data of projectData; let i = index" [value]="data.name" [selected]="i === 1">
+                 {{ data.name | titlecase }}
+             </option>
+         </select>
+        </div>
+    </div><br>
+
+    <div class="row justify-content-center">
+
+        <div class="col-3">
+          <div class="ss">
+          <div *ngIf="userDataf.length>0">
+            <table class="table table-striped-columns" style="text-align: center;border: 2px solid #00000011">
+                <thead>
+                  <tr>
+                      <th scope="col">Employee Name</th>
+                  </tr>
+                </thead>
+    
+                <tbody *ngFor="let data of userDataf">
+                  <tr>
+                    <td routerLink="/home/con-data/con-child/{{data.Name}}">{{ data.Name }}</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+          </div>
+        </div>
+        
+        <div class="col-9">
+               <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
+<!-- <option value="" disabled selected>Select project</option> -->

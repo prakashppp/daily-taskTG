@@ -1,0 +1,61 @@
+<div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-auto">
+
+          <p><b>Search by Date and Name</b></p>
+          <input type="date" [(ngModel)]="fdate" class="dated" (input)="search()"  />&nbsp;&nbsp;
+          <label class="searchdesign">
+            <input type="text" placeholder="Search by Name" [(ngModel)]="nameToSearch" (input)="search()"/> </label
+          >&nbsp;
+          <!-- <button class="btn btn-success" (click)="search()">Search</button
+          >&nbsp;&nbsp;<i class="bi bi-arrow-clockwise" (click)="showAll()"></i> -->
+          </div>
+
+          <div class="col">
+            <!-- Empty div to stretch and push the second button to the right -->
+          </div>
+
+          <div class="col-auto">
+            <div class="dd">
+              <br>
+               <button class="btn btn-secondary" routerLink="/home/daily-task">Add Daily Tasks</button><br>
+               <!-- <button class="btn btn-secondary btnsad" (click)="sendEmail()" [class.disabled]="isDisabled">
+               Send Email
+              </button> -->
+          </div>
+</div>
+          </div>
+        </div>
+          
+          <br><br>
+
+          
+         <div class="ss">
+          <table class="table table-striped-columns" style="text-align: center; border: 1px solid #0000004d">
+            <thead>
+              <tr>
+                <th scope="col">Sr.no</th>
+                <th scope="col">Employee Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Tasks</th>
+              </tr>
+            </thead>
+
+            <tbody *ngFor="let task of fdata; let i = index">
+              <tr>
+                <td>{{ i + 1 }}</td>
+                <td>{{ task.name | titlecase }}</td>
+                <td>{{ task.date | date : "dd-MMM-yyyy" }}</td>
+                <td>
+                  <ul *ngFor="let d of task.tasks; let j = index">
+                    <li>{{ j + 1 }}: {{ d }}</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+</div>
+       
+

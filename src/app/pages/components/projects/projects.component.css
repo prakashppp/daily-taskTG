@@ -1,0 +1,77 @@
+.content {
+  height: 70vh;
+  overflow: auto;
+}
+
+
+
+.searchdesign input {
+  border-radius: 10rem 10rem 10rem 10rem;
+  border: none;
+  height: 2rem;
+  width: 15rem;
+  background-color: #f1f1f1;
+  padding: 1.2rem;
+  font-size: 1rem;
+  outline: none;
+  font-weight: 500;
+}
+
+
+.btnsad {
+  margin-top: 5px;
+}
+
+.bi {
+  font-size: 25px;
+  margin-top: 20px;
+}
+
+.noOfProject {
+  text-align: right;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.iconsize {
+  font-size: 1rem;
+}
+
+.ss{
+  max-height: 600px; 
+  overflow: auto;
+  }
+
+  @media screen and (max-width:500px) {
+    .searchdesign input {
+      border-radius: 10rem 10rem 10rem 10rem;
+      border: none;
+      height: 2rem;
+      width: 7rem;
+      background-color: #f1f1f1;
+      padding: 0.5rem;
+      font-size: 0.8rem;
+      outline: none;
+      font-weight: 500;
+    }
+    .btn{
+      font-size: 0.8rem;
+      
+    }
+    .ss{
+      font-size:0.5rem ;
+    }
+
+    .noOfProject{
+      font-size: 0.8rem;
+    }
+    .iconsize {
+      font-size: 0.5rem;
+    }
+    .iconwidth {
+      width: 90px;
+    }
+    table {
+      text-align: left;
+    }
+  }

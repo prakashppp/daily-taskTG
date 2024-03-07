@@ -1,0 +1,58 @@
+.dated {
+    border-radius: 10rem 10rem 10rem 10rem;
+    border: none;
+    height: 2rem;
+    width: 15rem;
+    background-color: #f1f1f1;
+    padding: 1.2rem;
+    font-size: 1rem;
+    outline: none;
+    font-weight: 500;
+  }
+
+  li,
+ui {
+  list-style: none;
+  text-align-last: left;
+}
+
+.ss{
+   max-height: 470px; 
+  overflow: auto;
+}
+
+@media screen and (max-width:500px) and (min-width:300px){
+   .dated {
+    border-radius: 10rem 10rem 10rem 10rem;
+    border: none;
+    height: 2rem;
+    width: 8rem;
+    background-color: #f1f1f1;
+    padding: 1rem;
+    font-size: 0.8rem;
+    outline: none;
+    font-weight: 500;
+  }
+  
+  label{
+    font-size: 0.5rem;
+  }
+
+  .label2{
+    margin-left: 3px;
+  }
+
+  .date1{
+    margin-left:2px
+  }
+  .marginn{
+    margin-left:10px;
+    margin-top:5px;
+  }
+
+  .ss{
+    font-size:0.5rem ;
+    max-height: 390px; 
+    overflow: auto;
+  }
+}

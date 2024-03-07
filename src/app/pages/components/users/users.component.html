@@ -1,0 +1,216 @@
+<div class="content">
+        <div class="noOfEmp"><b>No of Employees : {{userData.length}}</b></div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-auto">
+              <!-- <button class="btn btn-primary">First Button</button> -->
+              <div class="searchdesign">
+                <input
+                  type="text"
+                  [(ngModel)]="searchName"
+                  (input)="filterName()"
+                  placeholder="Search by Name"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <!-- Empty div to stretch and push the second button to the right -->
+            </div>
+            <div class="col-auto">
+              <!-- <button class="btn btn-secondary">Second Button</button> -->
+              <button
+                class="btn btn-success"
+                (click)="open(content)"
+                (click)="clickAddUser()"
+              >
+                Add Employee
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-3">
+              <div class="searchdesign">
+                <input
+                  type="text"
+                  [(ngModel)]="searchName"
+                  (input)="filterName()"
+                  placeholder="Search by Name"
+                />
+              </div>
+            </div>
+            <div class="col-6">
+              <button
+                class="btn btn-success"
+                (click)="open(content)"
+                (click)="clickAddUser()"
+              >
+                Add User
+              </button>
+            </div>
+          </div>
+        </div> -->
+        <br />
+        <div class="ss">
+        <table class="table table-striped-columns">
+          <thead>
+            <tr>
+              <th scope="col">Sr.no</th>
+              <th scope="col">Employee Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let data of userDataf; let i = index">
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td>{{ data.Name | titlecase }}</td>
+              <td>{{ data.Email }}</td>
+              <td>{{ data.Mobile }}</td>
+              <td class="iconwidth">
+                <button
+                  type="button"
+                  class="btn"
+                  (click)="edit(data)"
+                  (click)="open(content)"
+                >
+                  <i class="bi bi-pencil-fill iconsize"></i>
+                </button>
+                <button type="button" class="btn" (click)="deleteUser(data)">
+                  <i class="bi bi-trash3-fill iconsize"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <ng-template #content let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Records</h4>
+            <button
+              type="button"
+              class="btn-close"
+              aria-label="Close"
+              (click)="modal.dismiss('Cross click')"
+              (click)="resett()"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="mform">
+              <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input
+                  type="text"
+                  [class.is-invalid]="
+                    mform.get('Name')?.invalid && mform.get('Name')?.touched
+                  "
+                  class="form-control"
+                  formControlName="Name"
+                />
+                <span
+                  [class.d-none]="
+                    mform.get('Name')?.valid || mform.get('Name')?.untouched
+                  "
+                  >Enter Valid name</span
+                >
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input
+                  type="text"
+                  [class.is-invalid]="
+                    mform.get('Email')?.invalid && mform.get('Email')?.touched
+                  "
+                  class="form-control"
+                  formControlName="Email"
+                />
+                <span
+                  [class.d-none]="
+                    mform.get('Email')?.valid || mform.get('Email')?.untouched
+                  "
+                  >Enter valid email</span
+                >
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Mobile</label>
+                <input
+                  type="text"
+                  [class.is-invalid]="
+                    mform.get('Mobile')?.invalid && mform.get('Mobile')?.touched
+                  "
+                  class="form-control"
+                  formControlName="Mobile"
+                />
+                <span
+                  [class.d-none]="
+                    mform.get('Mobile')?.valid || mform.get('Mobile')?.untouched
+                  "
+                  >Enter Valid Mobile</span
+                >
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Project</label>
+                <select #ii 
+                  class="form-select"
+                  aria-label="Default select example"
+                  [(ngModel)]="project"
+                  formControlName="Project"
+                >
+                  <option value="" disabled selected>Select</option>
+                 <option *ngFor="let data of projectData" [value]="data.name">{{data.name}}</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">UserType</label>
+                <select #ii
+                  class="form-select"
+                  aria-label="Default select example"
+                  [(ngModel)]="userType"
+                  formControlName="UserType"
+                >
+                  <option value="" disabled>Select</option>
+                  <option value="Admin">Admin</option>
+                  <option value="Employee">Employee</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close('Save click')"
+              (click)="resett()"
+            >
+              Close
+            </button>
+            <button
+              *ngIf="showAdd"
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="createUser(mform.value)"
+              (click)="modal.close('Save click')"
+              [disabled]="!mform.valid"
+            >
+              Submit
+            </button>
+            <button
+              *ngIf="showupdate"
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="updateUser()"
+              (click)="modal.close('Save click')"
+            >
+              Update
+            </button>
+          </div>
+        </ng-template>
+</div>

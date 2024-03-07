@@ -1,0 +1,25 @@
+
+      <div class="content">
+       
+        <table class="table table-striped-columns">
+          <thead>
+            <tr>
+              <th scope="col">Sr.no</th>
+              <th scope="col">Employee Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Mobile</th>
+             
+            </tr>
+          </thead>
+          <tbody *ngFor="let data of userDataf; let i = index">
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td>{{ data.Name | titlecase }}</td>
+              <td>{{ data.Email }}</td>
+              <td>{{ data.Mobile }}</td>
+             
+            </tr>
+          </tbody>
+        </table>
+      </div>
+   

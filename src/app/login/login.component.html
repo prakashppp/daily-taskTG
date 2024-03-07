@@ -1,0 +1,74 @@
+<body>
+	<div class="wrapper">
+		<div class="container">
+		  <div class="col-left">
+			<div class="login-text">
+			  <!-- <h2>Logo</h2> -->
+			  <img src="https://scontent.fpnq7-1.fna.fbcdn.net/v/t1.18169-9/16114128_1620921818214649_469527907660532069_n.png?_nc_cat=100&ccb=1-7&_nc_sid=be3454&_nc_ohc=y-rMgJS83z8AX-zNms4&_nc_ht=scontent.fpnq7-1.fna&oh=00_AfA87gVvUz1-MrlqLLFxW4oNBNL2KDNk9uW4J3tjBJrKDA&oe=6602D8B9" alt="">
+			  <br><br>
+			  <h1>
+				Daily<br>Tasks<br>Update
+			  </h1>
+			  <!-- <a class="btn" href="">Read More</a> -->
+			</div>
+		  </div>
+		  <div class="col-right">
+			<div class="login-form">
+			  <h2 class="loginword">Login</h2><br>
+			  <form [formGroup]="loginf">
+				<p>
+				  <input class="form-control" [class.is-invalid]="loginf.get('Email')?.invalid && loginf.get('Email')?.touched" type="text" formControlName="Email" placeholder="Username" required>
+				  <small [class.d-none]="loginf.get('Email')?.valid || loginf.get('Email')?.untouched">Enter valid email</small>
+				</p>
+				<p>
+				  <input [class.is-invalid]="loginf.get('Password')?.invalid && loginf.get('Password')?.touched" class="form-control" type="password" formControlName="Password" placeholder="Password" required>
+				  <small [class.d-none]="loginf.get('Password')?.valid || loginf.get('Password')?.untouched">Enter valid email</small>
+				</p><br>
+				<p class="container5">
+				  <input class="btn" [disabled]="loginf.invalid" (click)="loginUser(loginf.value)" type="submit" value="Sign In" />
+				</p>
+				<!-- <p>
+				  <a href="">Forget password?</a>
+				  <a href="">Create an account.</a>
+				</p> -->
+			  </form>
+			</div>
+		  </div>
+		</div>
+		<!-- <div class="credit">
+		  Designed by <a href="https://htmlcodex.com">HTML Codex</a>
+		</div> -->
+	  </div>
+	</body>
+	
+
+
+
+<!-- <body>
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+			<form class="login" [formGroup]="loginf">
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input type="text" formControlName="Email" class="login__input" placeholder="User name / Email">
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-lock"></i>
+					<input type="password"formControlName="Password" class="login__input" placeholder="Password">
+				</div>
+				<button class="button login__submit" (click)="loginUser(loginf.value)">
+					<span class="button__text">Log In Now</span>
+					<i class="button__icon fas fa-chevron-right"></i>
+				</button>				
+			</form>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+	</div>
+</div>
+</body>  -->
