@@ -54,7 +54,7 @@
         </div> -->
         <br />
         <div class="ss">
-        <table class="table table-striped-columns">
+        <table class="table table-striped">
           <thead>
             <tr>
               <th scope="col">Sr.no</th>
@@ -64,7 +64,8 @@
               <th scope="col">Action</th>
             </tr>
           </thead>
-          <tbody *ngFor="let data of userDataf; let i = index">
+         
+          <tbody *ngFor="let data of userDataf; let i = index" [style.background-color]="i % 2 === 0 ? '#00000011' : 'white'">
             <tr>
               <td>{{ i + 1 }}</td>
               <td>{{ data.Name | titlecase }}</td>
@@ -85,8 +86,10 @@
               </td>
             </tr>
           </tbody>
+       
         </table>
-        </div>
+      </div>
+        
 
         <ng-template #content let-modal>
           <div class="modal-header">

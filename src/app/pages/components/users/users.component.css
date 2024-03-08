@@ -29,7 +29,42 @@
   font-size: 1rem;
 }
 
-@media screen and (max-width: 500px) {
+
+@media screen and (max-width:500px) {
+  .searchdesign input {
+    border-radius: 10rem 10rem 10rem 10rem;
+    border: none;
+    height: 2rem;
+    width: 7rem;
+    background-color: #f1f1f1;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    outline: none;
+    font-weight: 500;
+  }
+  .btn{
+    font-size: 0.8rem;
+    
+  }
+  .ss{
+    font-size:0.5rem ;
+  }
+
+  .noOfEmp{
+    font-size: 0.8rem;
+  }
+  .iconsize {
+    font-size: 0.5rem;
+  }
+  .iconwidth {
+    width: 90px;
+  }
+  table {
+    text-align: left;
+  }
+}
+
+/* @media screen and (min-width: 300px) {
   .searchdesign input {
     border-radius: 10rem 10rem 10rem 10rem;
     border: none;
@@ -42,11 +77,15 @@
     font-weight: 500;
   }
   .btn {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
+    width: 6rem;
+    height: 1.8rem;
+    margin-top:0.1rem
   }
   .ss {
     font-size: 0.5rem;
   }
+  
   .noOfEmp {
     font-size: 0.8rem;
   }
@@ -61,4 +100,29 @@
     text-align: left;
   }
 }
+
+@media screen and (min-width:500px) {
+  .searchdesign input {
+    border-radius: 10rem 10rem 10rem 10rem;
+    border: none;
+    height: 2rem;
+    width: 13rem;
+    background-color: #f1f1f1;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    outline: none;
+    font-weight: 500;
+  }
+
+  .btn {
+    font-size: 0.6rem;
+    width: 7rem;
+    height: 2rem;
+    margin-top:0.1rem
+  }
+
+  .ss {
+    font-size: 0.7rem;
+  }
+} */
 

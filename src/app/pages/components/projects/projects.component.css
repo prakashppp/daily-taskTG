@@ -42,6 +42,10 @@
   overflow: auto;
   }
 
+  /* tbody{
+    overflow-y: auto; max-height: 400px;
+  } */
+
   @media screen and (max-width:500px) {
     .searchdesign input {
       border-radius: 10rem 10rem 10rem 10rem;

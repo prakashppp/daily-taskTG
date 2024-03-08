@@ -32,7 +32,7 @@
 
           
          <div class="ss">
-          <table class="table table-striped-columns" style="text-align: center; border: 1px solid #0000004d">
+          <table class="table table-striped" style="text-align: center; border: 1px solid #0000004d">
             <thead>
               <tr>
                 <th scope="col">Sr.no</th>
@@ -42,7 +42,7 @@
               </tr>
             </thead>
 
-            <tbody *ngFor="let task of fdata; let i = index">
+            <tbody *ngFor="let task of fdata; let i = index" [style.background-color]="i % 2 === 0 ? '#00000011' : 'white'">
               <tr>
                 <td>{{ i + 1 }}</td>
                 <td>{{ task.name | titlecase }}</td>

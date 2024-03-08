@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Project } from '../model/project';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class ProjectsService {
     );
   }
 
-  getAll() {
+  getAll():Observable<Project> {
     return this._http.get<Project>('http://localhost:3000/project/getAll');
   }
 

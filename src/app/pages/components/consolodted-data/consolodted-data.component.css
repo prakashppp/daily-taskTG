@@ -3,6 +3,26 @@
     overflow: auto;
   }
 
+  .dated {
+    border-radius: 10rem 10rem 10rem 10rem;
+    border: none;
+    height: 2rem;
+    width: 15rem;
+    background-color: #f1f1f1;
+    padding: 1.2rem;
+    font-size: 1rem;
+    outline: none;
+    font-weight: 500;
+  }
+
+  li,
+  ui {
+    list-style: none;
+    text-align-last: left;
+
+  }
+
+
   @media screen and (max-width:500px) {
     .ss{
         font-size:0.5rem ;

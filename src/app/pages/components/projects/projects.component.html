@@ -34,7 +34,7 @@
        
         <br />
         <div class="ss">
-        <table class="table table-striped-columns">
+        <table class="table table-striped" style="border: 1px solid #0000004d">
           <thead>
             <tr>
               <th scope="col">Sr.no</th>
@@ -46,7 +46,7 @@
               <th scope="col">Action</th>
             </tr>
           </thead>
-          <tbody *ngFor="let data of projectDataf; let i = index">
+          <tbody *ngFor="let data of projectDataf; let i = index" [style.background-color]="i % 2 === 0 ? '#00000011' : 'white'">
             <tr>
               <td>{{ i + 1 }}</td>
               <td routerLink="/home/emp-projects/{{data.name}}">{{ data.name | titlecase }}</td>
