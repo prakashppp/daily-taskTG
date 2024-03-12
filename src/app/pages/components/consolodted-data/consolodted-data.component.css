@@ -22,6 +22,10 @@
 
   }
 
+  .ss{
+    max-height: 68vh; 
+    overflow: auto;
+  }
 
   @media screen and (max-width:500px) {
     .ss{

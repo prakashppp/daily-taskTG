@@ -5,7 +5,7 @@
 
           <p><b>Search by Date and Name</b></p>
           <input type="date" [(ngModel)]="fdate" class="dated" (input)="search()"  />&nbsp;&nbsp;
-          <label class="searchdesign">
+          <label class="searchdesign" *ngIf="!isDisabled">
             <input type="text" placeholder="Search by Name" [(ngModel)]="nameToSearch" (input)="search()"/> </label
           >&nbsp;
           <!-- <button class="btn btn-success" (click)="search()">Search</button
@@ -20,7 +20,7 @@
             <div class="dd">
               <br>
                <button class="btn btn-secondary" routerLink="/home/daily-task">Add Daily Tasks</button><br>
-               <!-- <button class="btn btn-secondary btnsad" (click)="sendEmail()" [class.disabled]="isDisabled">
+               <!-- <button *ngIf="!isDisabled" class="btn btn-secondary btnsad" (click)="sendEmail()">
                Send Email
               </button> -->
           </div>
@@ -32,25 +32,29 @@
 
           
          <div class="ss">
-          <table class="table table-striped" style="text-align: center; border: 1px solid #0000004d">
+          <table class="table table-striped" style="border: 1px solid #0000004d">
             <thead>
               <tr>
                 <th scope="col">Sr.no</th>
-                <th scope="col">Employee Name</th>
+                <th scope="col" *ngIf="!isDisabled">Employee Name</th>
                 <th scope="col">Date</th>
+                <th scope="col">Project</th>
                 <th scope="col">Tasks</th>
+                
+
               </tr>
             </thead>
 
             <tbody *ngFor="let task of fdata; let i = index" [style.background-color]="i % 2 === 0 ? '#00000011' : 'white'">
               <tr>
                 <td>{{ i + 1 }}</td>
-                <td>{{ task.name | titlecase }}</td>
+                <td *ngIf="!isDisabled">{{ task.name | titlecase }}</td>
                 <td>{{ task.date | date : "dd-MMM-yyyy" }}</td>
+                <td>{{task.projects | titlecase}}</td>
                 <td>
-                  <ul *ngFor="let d of task.tasks; let j = index">
-                    <li>{{ j + 1 }}: {{ d }}</li>
-                  </ul>
+                  <div *ngFor="let d of task.tasks; let j = index">
+                    <div>{{ j + 1 }}: {{ d }}</div>
+                  </div>
                 </td>
               </tr>
             </tbody>

@@ -3,4 +3,5 @@ export interface Emp{
     name:string;
     date:Date;
     tasks:string[];
+    projects:string;
 }

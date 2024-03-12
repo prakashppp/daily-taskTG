@@ -60,6 +60,7 @@
               <th scope="col">Sr.no</th>
               <th scope="col">Employee Name</th>
               <th scope="col">Email</th>
+              <th scope="col">Project</th>
               <th scope="col">Mobile</th>
               <th scope="col">Action</th>
             </tr>
@@ -70,6 +71,12 @@
               <td>{{ i + 1 }}</td>
               <td>{{ data.Name | titlecase }}</td>
               <td>{{ data.Email }}</td>
+              <!-- <td>{{ data.Project | titlecase }}</td> -->
+              <td>
+                <div *ngFor="let d of data.Project; let j = index">
+                  <div>{{ d | titlecase }}</div>
+                </div>
+              </td>
               <td>{{ data.Mobile }}</td>
               <td class="iconwidth">
                 <button
@@ -160,7 +167,7 @@
 
               <div class="mb-3">
                 <label class="form-label">Project</label>
-                <select #ii 
+                <!-- <select #ii 
                   class="form-select"
                   aria-label="Default select example"
                   [(ngModel)]="project"
@@ -168,8 +175,32 @@
                 >
                   <option value="" disabled selected>Select</option>
                  <option *ngFor="let data of projectData" [value]="data.name">{{data.name}}</option>
-                </select>
+                </select> -->
+
+                <div class="form-group">
+                  <label for="multiSelect">Select Projects</label>
+                  <select multiple class="form-control" id="multiSelect" formControlName="Project">
+                    <option *ngFor="let option of projectData" [value]="option.name">{{ option.name }}</option>
+                  </select>
+              
+                </div>
+                {{sel}}
+
+                
+                
+                               
+
+                <!-- <mat-form-field appearance="fill" class="zz">
+                  <mat-label>Select Project</mat-label>
+                  <mat-select  [(ngModel)]="project"
+                  formControlName="Project"  multiple >
+                    <mat-option class="zz"*ngFor="let topping of projectData" [value]="topping">{{topping.name}}</mat-option>
+                  </mat-select>
+
+                </mat-form-field> -->
+              <!-- {{toppings.value}} -->
               </div>
+              {{selectedOptions}}
 
               <div class="mb-3">
                 <label class="form-label">UserType</label>
@@ -185,6 +216,8 @@
                 </select>
               </div>
             </form>
+            
+          
           </div>
           <div class="modal-footer">
             <button
@@ -201,8 +234,9 @@
               class="btn btn-outline-dark"
               (click)="createUser(mform.value)"
               (click)="modal.close('Save click')"
-              [disabled]="!mform.valid"
+              
             >
+            <!-- [disabled]="!mform.valid" -->
               Submit
             </button>
             <button

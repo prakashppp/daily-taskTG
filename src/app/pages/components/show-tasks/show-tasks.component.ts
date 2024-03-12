@@ -50,6 +50,13 @@ export class ShowTasksComponent {
         this.data = res;
         this.fdata = res;
       } else {
+
+        this.us.getAll().subscribe((res: any) => {
+          this.userData = res;
+        });
+        this.userf = this.userData.filter((user: any) => {
+          return this.userId == user._id;
+        });
         this.data = res.filter((daddd: any) => {
           return daddd.name == this.userf[0].Name;
         });
@@ -62,19 +69,19 @@ export class ShowTasksComponent {
 
   ngDoCheck(): void {
     this.decodeToken(this.dd);
-    this.api.getAll().subscribe((res: any) => {
-      if (this.isDisabled == false) {
-        this.data = res;
-        this.fdata = res;
-      } else {
-        this.data = res.filter((daddd: any) => {
-          return daddd.name == this.userf[0].Name;
-        });
-        this.fdata = res.filter((daddd: any) => {
-          return daddd.name == this.userf[0].Name;
-        });
-      }
-    });
+    // this.api.getAll().subscribe((res: any) => {
+    //   if (this.isDisabled == false) {
+    //     this.data = res;
+    //     this.fdata = res;
+    //   } else {
+    //     this.data = res.filter((daddd: any) => {
+    //       return daddd.name == this.userf[0].Name;
+    //     });
+    //     this.fdata = res.filter((daddd: any) => {
+    //       return daddd.name == this.userf[0].Name;
+    //     });
+    //   }
+    // });
   }
 
   unUpdtedUsers: Emp[] = [];

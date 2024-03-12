@@ -1,11 +1,12 @@
 import { Component, inject, TemplateRef } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { CommonService } from '../../services/common.service';
 import { ProjectsService } from '../../services/projects.service';
 import { User } from '../../model/user';
 import { Project } from '../../model/project';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-users',
@@ -17,20 +18,33 @@ export class UsersComponent {
     private us: UserService,
     private fb: FormBuilder,
     private common: CommonService,
-    private ps:ProjectsService
+    private ps: ProjectsService
   ) {}
 
+  toppings = new FormControl('');
+  toppingList: string[] = [
+    'Extra cheese',
+    'Mushroom',
+    'Onion',
+    'Pepperoni',
+    'Sausage',
+    'Tomato',
+  ];
+  selectedToppings: string[] = [];
+
   userData: User[] = [];
-  userDataf:User[]=[]
+  userDataf: User[] = [];
   mform!: FormGroup;
   showAdd: boolean = false;
   showupdate: boolean = false;
   userObj = new User();
   userType = '';
   isDisabled: any;
-  searchName=""
-  project=""
-  projectData:Project[]=[]
+  searchName = '';
+  project = '';
+  projectData: Project[] = [];
+  selectedOptions: string[] = [];
+  sel:string[]=[]
 
   ngOnInit() {
     this.mform = this.fb.group({
@@ -48,19 +62,37 @@ export class UsersComponent {
       ],
       UserType: ['', Validators.required],
       Project:['',Validators.required]
-      
+      //Project: this.fb.array([], Validators.required),
     });
     this.getAll();
 
     this.common.isDisabled.subscribe((res) => {
-        this.isDisabled = res;
+      this.isDisabled = res;
     });
 
-    this.ps.getAll().subscribe((res:any)=>{
-      this.projectData=res;
-    })
+    this.ps.getAll().subscribe((res: any) => {
+      this.projectData = res;
+    });
   }
 
+  // get projectFormArray() {
+  //   return this.mform.get('Project') as FormArray;
+  // }
+
+  // // This function will be triggered whenever the selection changes
+  // onSelectionChange(event:any) {
+  //   const selectedOptions = event.target.value; // Get the selected options
+  //   this.projectFormArray.clear(); // Clear existing selections
+  //  console.log(selectedOptions)
+  //   // Push the selected options into the form array
+  //   selectedOptions.forEach((option:any) => {
+  //     this.projectFormArray.push(this.fb.control(option));
+  //   });
+   
+  // }
+ 
+
+  
   filterName() {
     this.userDataf = this.userData.filter((item) => {
       return item.Name.toLowerCase().startsWith(this.searchName.toLowerCase()); //includes
@@ -75,17 +107,18 @@ export class UsersComponent {
   getAll() {
     this.us.getAll().subscribe((res: any) => {
       this.userData = res;
-      this.userDataf=res;
+      this.userDataf = res;
     });
   }
 
   createUser(data: any) {
+    console.log(data)
     this.us.createUser(data).subscribe((res) => {
       // window.alert('User added successfully');
-      window.alert(res.message)
+      window.alert(res.message);
       this.mform.reset();
-      this.userType='';
-      this.project=''
+      this.userType = '';
+      this.project = '';
       this.getAll();
     });
   }
@@ -98,9 +131,21 @@ export class UsersComponent {
     this.mform.controls['Name'].setValue(data.Name);
     this.mform.controls['Email'].setValue(data.Email);
     this.mform.controls['Mobile'].setValue(data.Mobile);
-   // this.mform.controls['UserType'].setValue(data.UserType);
-    this.userType=data.UserType
-    this.project=data.Project
+    this.userType = data.UserType;
+    console.log('ddd'+data.project)
+    this.mform.controls['Project'].setValue(data.Project)
+   
+
+    // const projectFormArray = this.mform.get('Project') as FormArray;
+    // projectFormArray.clear();
+
+    // data.Project.forEach((projectItem: string) => {
+    //   const projectFormControl = this.fb.control(
+    //     projectItem,
+    //     Validators.required
+    //   );
+    //   projectFormArray.push(projectFormControl);
+    // });
   }
 
   updateUser() {
@@ -109,6 +154,10 @@ export class UsersComponent {
     this.userObj.Mobile = this.mform.value.Mobile;
     this.userObj.UserType = this.mform.value.UserType;
     this.userObj.Project = this.mform.value.Project;
+    console.log(this.userObj.UserType);
+    console.log(this.userObj.Project);
+    
+    
 
     this.us.updateUser(this.userObj, this.userObj.id).subscribe(() => {
       window.alert('User Updated');

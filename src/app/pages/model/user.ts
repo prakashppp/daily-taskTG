@@ -4,5 +4,6 @@ export class User{
     Email:string='';
     Mobile:number=0;
     UserType:string='';
-    Project:string='';
+    //Project:string='';
+    Project:string[]=[];
 }

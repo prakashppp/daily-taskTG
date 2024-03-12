@@ -16,6 +16,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { ConsolodtedDataComponent } from './components/consolodted-data/consolodted-data.component';
 import { ConChildComponent } from './components/con-child/con-child.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ConChildComponent } from './components/con-child/con-child.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    FullCalendarModule
+    FullCalendarModule,
+    MatSelectModule
   ]
 })
 export class HomeModule { }

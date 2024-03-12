@@ -29,6 +29,20 @@
   font-size: 1rem;
 }
 
+li,
+ui {
+  list-style: none;
+  text-align-last: left;
+}
+
+
+/* mat-form-field  {
+  z-index: 9999 !important; 
+} */
+
+zz{
+  z-index: 2000!important;
+}
 
 @media screen and (max-width:500px) {
   .searchdesign input {

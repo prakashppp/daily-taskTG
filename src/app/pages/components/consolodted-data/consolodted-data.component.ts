@@ -40,16 +40,26 @@ export class ConsolodtedDataComponent {
       this.us.getAll().subscribe((res: any) => {
         this.userData = res;
 
+        // this.userDataf = this.userData.filter((user: any) => {
+        //   return user.Project == this.projectData[1].name;
+        // });
+
         this.userDataf = this.userData.filter((user: any) => {
-          return user.Project == this.projectData[1].name;
+          return user.Project.includes(this.projectData[1].name);
         });
-        
+
+        this.projectName=this.projectData[1].name
+
         this.api.getAll().subscribe((res: any) => {
           this.taskData = res;
 
           this.taskDataf = this.taskData.filter((task: any) => {
-            return task.name == this.userDataf[0].Name;
+            return task.name == this.userDataf[0].Name && task.projects==this.projectName;
           });
+
+          // this.taskDataf = this.taskData.filter((task: any) => {
+          //   return task.name == this.userDataf[0].Name && task.projects==this.projectName;
+          // });
         });
       });
     });
@@ -57,7 +67,16 @@ export class ConsolodtedDataComponent {
 
   search() {
     this.userDataf = this.userData.filter((user: any) => {
-      return user.Project == this.projectName;
+        // return user.Project == this.projectName;
+        return user.Project.includes(this.projectName);
+    });
+
+    this.api.getAll().subscribe((res: any) => {
+      this.taskData = res;
+
+      this.taskDataf = this.taskData.filter((task: any) => {
+        return task.name == this.userDataf[0].Name && task.projects==this.projectName;
+      });
     });
   }
 
@@ -66,25 +85,32 @@ export class ConsolodtedDataComponent {
       const datee1 = new Date(this.fDate);
       const date1 = datee1.toLocaleDateString();
       const datee2 = new Date(this.sDate);
+      datee2.setDate(datee2.getDate() + 1);
       const date2 = datee2.toLocaleDateString();
 
       this.taskDataf = this.taskData.filter((task: any) => {
         const datee3 = new Date(task.date);
         const date3 = datee3.toLocaleDateString();
         // console.log(date3);
-        return date3 >= date1 && date3 <= date2 && task.name == this.empName;
+              
+        return datee3 >= datee1 && datee3 <= datee2 && task.name==this.empName && task.projects==this.projectName;
+        
+
       });
     } else {
       this.taskDataf = this.taskData.filter((task: any) => {
-        return task.name == this.empName;
+        return task.name == this.empName && task.projects==this.projectName ;
       });
+      
     }
   }
 
   getEmpName(data: any) {
     this.empName = data;
+    console.log(this.empName)
+    console.log(this.projectName)
     this.taskDataf = this.taskData.filter((task: any) => {
-      return task.name == this.empName;
+      return task.name == this.empName && task.projects==this.projectName;
     });
     this.search2();
   }

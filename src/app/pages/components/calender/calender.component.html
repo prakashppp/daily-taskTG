@@ -34,7 +34,7 @@
             <div
               class="card-text"
               *ngFor="let task of taskDataf; let i = index"
-            >
+            ><h3>{{task.projects | titlecase}}</h3>
               <ul *ngFor="let d of task.tasks; let j = index">
                 <li>{{ j + 1 }}: {{ d }}</li>
               </ul>

@@ -27,7 +27,7 @@ export class EmpProjectComponent {
           const projectName = params['name'].toLowerCase();
           this.userDataf = this.userData.filter((user) => {
             //return user.Project === params['name'];
-            return user.Project === projectName;
+            return user.Project.includes(projectName);
           });
         }
       });

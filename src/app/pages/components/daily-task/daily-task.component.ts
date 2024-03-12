@@ -33,20 +33,30 @@ export class DailyTaskComponent implements DoCheck {
   userName!: string;
   dd: any = localStorage.getItem('token');
   userf: User[] = [];
+  selectedValue=''
+ 
 
   ngOnInit() {
     this.nForm = this.fb.group({
       tasks: ['',[Validators.required,Validators.pattern('[a-zA-Z]+[a-zA-Z0-9-&*+-_$#@!()%~^= ]*')]],
+      selll:['']
     });
     this.us.getAll().subscribe((res: any) => {
       this.userData = res;
+      this.userf = this.userData.filter((user: any) => {
+        return this.userId == user._id;
+      });
+      this.selectedValue=this.userf[0].Project[0]
     });
 
     this.common.isDisabled.subscribe((res) => {
       this.isDisabled = res;
     });
+
+    
   }
 
+  
   ngDoCheck(): void {
     this.decodeToken(this.dd);
   }
@@ -58,6 +68,7 @@ export class DailyTaskComponent implements DoCheck {
       this.userf = this.userData.filter((user: any) => {
         return this.userId == user._id;
       });
+      
     } catch (error) {
       console.error('Error decoding token:', error);
     }
@@ -85,6 +96,7 @@ export class DailyTaskComponent implements DoCheck {
       name: this.userf[0].Name,
       date: this.todaysDate,
       tasks: this.dailyTasks,
+      projects:this.selectedValue
     };
 
     this.api.addTasks(obj).subscribe((res: any) => {
@@ -92,7 +104,7 @@ export class DailyTaskComponent implements DoCheck {
       window.alert(res.message);
     });
 
-    this.nForm.reset();
+    // this.nForm.reset();
     this.dailyTasks = [];
     //this.isDisabled1=true;
   }
