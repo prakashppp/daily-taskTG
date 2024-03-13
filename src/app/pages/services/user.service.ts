@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
+import { environment } from 'src/app/environment/environment';
+
 
 @Injectable({
   providedIn: 'root',
@@ -10,29 +12,29 @@ export class UserService {
   constructor(private _http: HttpClient) {}
 
   createUser(data: any) {
-    return this._http.post<any>('http://localhost:3000/user/createUser', data);
+    return this._http.post<any>(environment.localUrl+'user/createUser', data);
   }
 
   getAll():Observable<User> {
-    return this._http.get<User>('http://localhost:3000/user/getAll');
+    return this._http.get<User>(environment.localUrl+'user/getAll');
   }
 
   updateUser(data: any, id: number) {
     return this._http.patch(
-      'http://localhost:3000/user/updateUser/' + id,
+      environment.localUrl+'user/updateUser/' + id,
       data
     );
   }
 
   deleteUser(id: number) {
-    return this._http.delete('http://localhost:3000/user/deleteUser/' + id);
+    return this._http.delete(environment.localUrl+'user/deleteUser/' + id);
   }
 
   loginUser(data: any): Observable<any> {
-    return this._http.post<any>('http://localhost:3000/user/login', data);
+    return this._http.post<any>(environment.localUrl+'user/login', data);
   }
 
   sendEmail(data: any): Observable<any> {
-    return this._http.post<any>('http://localhost:3000/user/sendEmail', data);
+    return this._http.post<any>(environment.localUrl+'user/sendEmail', data);
   }
 }
