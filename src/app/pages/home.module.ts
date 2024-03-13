@@ -17,6 +17,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { ConsolodtedDataComponent } from './components/consolodted-data/consolodted-data.component';
 import { ConChildComponent } from './components/con-child/con-child.component';
 import { MatSelectModule } from '@angular/material/select';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -41,7 +43,8 @@ import { MatSelectModule } from '@angular/material/select';
     ReactiveFormsModule,
     FormsModule,
     FullCalendarModule,
-    MatSelectModule
+    MatSelectModule,
+    NgbModule
   ]
 })
 export class HomeModule { }

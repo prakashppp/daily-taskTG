@@ -107,7 +107,8 @@ edit(data: any) {
   this.projectObj.id = data._id;
   this.mform.controls['name'].setValue(data.name);
   this.teamLead = data.teamLead;
-  this.sdate=data.startDate
+  //this.sdate=data.startDate
+ console.log(data.startDate)
 
   this.mform.controls['startDate'].setValue(data.startDate);
   this.mform.controls['expectedEndDate'].setValue(data.expectedEndDate)

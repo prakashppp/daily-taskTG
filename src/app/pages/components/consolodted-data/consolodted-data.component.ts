@@ -32,7 +32,7 @@ export class ConsolodtedDataComponent {
   sDate!: Date;
   taskData: Emp[] = [];
   taskDataf: Emp[] = [];
-
+  
   ngOnInit() {
     this.ps.getAll().subscribe((res: any) => {
       this.projectData = res;
@@ -65,6 +65,13 @@ export class ConsolodtedDataComponent {
     });
   }
 
+  selectName(name: string): void {
+    this.empName = name;
+  }
+  
+  isSelected(name: string): boolean {
+    return this.empName === name;
+  }
   search() {
     this.userDataf = this.userData.filter((user: any) => {
         // return user.Project == this.projectName;

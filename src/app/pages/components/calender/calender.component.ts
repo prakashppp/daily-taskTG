@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { User } from '../../model/user';
 import { Emp } from '../../model/employee';
 import { CommonService } from '../../services/common.service';
@@ -8,6 +8,7 @@ import { ApiService } from '../../services/api.service';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { CalendarOptions } from '@fullcalendar/core';
+import { NgbCalendar, NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -16,19 +17,27 @@ import { CalendarOptions } from '@fullcalendar/core';
   styleUrls: ['./calender.component.css'],
 })
 export class CalenderComponent {
+  model!: NgbDateStruct;
+  date!:Date
   
   isDisabled: boolean = true;
   userData: User[] = [];
   userName = '';
-  fdate!: string;
+  // fdate!: string;
+  fdate!:Date
   taskData: Emp[] = [];
   taskDataf: Emp[] = [];
  
   constructor(
     private common: CommonService,
     private us: UserService,
-    private api: ApiService
+    private api: ApiService,
+    private calendar: NgbCalendar
   ) {}
+
+  selectToday() {
+		this.model = this.calendar.getToday();
+	} 
 
   ngOnInit() {
     this.common.isDisabled.subscribe((res) => {
@@ -79,6 +88,7 @@ export class CalenderComponent {
               .toLowerCase()
               .includes(this.userName.toLowerCase())) &&
           (!DDate || LDate === DDate)
+          
         );
       });
 

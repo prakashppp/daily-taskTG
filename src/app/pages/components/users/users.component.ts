@@ -53,7 +53,7 @@ export class UsersComponent {
         '',
         [
           Validators.required,
-          // Validators.pattern('^[a-z0-9.]+@technogrowth.com$'),
+          Validators.pattern('^[a-z0-9.]+@technogrowth.com$'),
         ],
       ],
       Mobile: [
