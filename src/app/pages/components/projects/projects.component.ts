@@ -83,37 +83,21 @@ export class ProjectsComponent {
     });
   }
 
-  // sdate!: Date;
-  // edit(data: any) {
-  //   this.showAdd = false;
-  //   this.showupdate = true;
-
-  //   this.projectObj.id = data._id;
-  //   this.mform.controls['name'].setValue(data.name);
-  //   this.teamLead = data.teamLead;
-  //   //this.sdate = data.startDate
-  //   //this.mform.controls['startDate'].setValue(data.startDate);
-  //   this.mform.controls['startDate'].setValue(this.sdate.toISOString());
-  //   //this.mform.controls['expectedEndDate'].setValue(data.expectedEndDate);
-
-  //   console.log(this.sdate);
-  // }
-
   sdate!: Date;
-edit(data: any) {
-  this.showAdd = false;
-  this.showupdate = true;
+  edit(data: any) {
+    this.showAdd = false;
+    this.showupdate = true;
 
-  this.projectObj.id = data._id;
-  this.mform.controls['name'].setValue(data.name);
-  this.teamLead = data.teamLead;
-  //this.sdate=data.startDate
- console.log(data.startDate)
+    this.projectObj.id = data._id;
+    this.mform.controls['name'].setValue(data.name);
+    this.teamLead = data.teamLead;
+    //this.sdate = data.startDate
+    //this.mform.controls['startDate'].setValue(data.startDate);
+    this.mform.controls['startDate'].setValue(data.startDate);
+    this.mform.controls['expectedEndDate'].setValue(data.expectedEndDate);
 
-  this.mform.controls['startDate'].setValue(data.startDate);
-  this.mform.controls['expectedEndDate'].setValue(data.expectedEndDate)
-  
-}
+    console.log(this.sdate);
+  }
 
  
   updateProject() {
