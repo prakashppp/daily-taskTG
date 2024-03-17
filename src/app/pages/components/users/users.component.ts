@@ -159,8 +159,9 @@ export class UsersComponent {
     
     
 
-    this.us.updateUser(this.userObj, this.userObj.id).subscribe(() => {
-      window.alert('User Updated');
+    this.us.updateUser(this.userObj, this.userObj.id).subscribe((res:any) => {
+      //window.alert('User Updated');
+      window.alert(res.message);
       this.getAll();
       this.mform.reset();
     });

@@ -4,9 +4,9 @@
 
 export const environment = {
     production: false,
-    localUrl:"http://167.99.234.75:3000/"
+     //localUrl:"http://167.99.234.75:3000/"
     //  https://localhost:7050/api/Authorization/authorize
-     //localUrl:"http://localhost:3000/"
+     localUrl:"http://localhost:3000/"
   
     
   };

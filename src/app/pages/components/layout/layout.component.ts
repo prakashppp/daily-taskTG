@@ -19,11 +19,23 @@ export class LayoutComponent {
   logout(){
     localStorage.removeItem('token')
   }
-  @ViewChild('navbarToggler') navbarToggler!: ElementRef;
-  closeNavbar() {
+  // @ViewChild('navbarToggler') navbarToggler!: ElementRef;
+  // closeNavbar() {
        
-    if (this.navbarToggler.nativeElement.classList) {
-      this.navbarToggler.nativeElement.click();
+  //   if (this.navbarToggler.nativeElement.classList.contains('collapse')) {
+  //     this.navbarToggler.nativeElement.click();
+  //   }
+  // }
+
+  isNavbarCollapsed = true;
+
+  toggleNavbar() {
+    this.isNavbarCollapsed = !this.isNavbarCollapsed;
+  }
+
+  handleNavItemClicked() {
+    if (this.isNavbarCollapsed) {
+      this.toggleNavbar();
     }
   }
 

@@ -94,7 +94,8 @@ body {
 .nav-link{
   font-weight: 500;
   font-size: large;
-  color:black
+  color:black;
+  --bs-navbar-color: rgb(21, 20, 20);
 }
 
 /* .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
