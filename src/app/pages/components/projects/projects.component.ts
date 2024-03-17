@@ -83,12 +83,16 @@ export class ProjectsComponent {
     });
   }
 
+<<<<<<< HEAD
   
+=======
+>>>>>>> e8d74e36e2e701da04ee9b377cb8723925663a41
   sdate!: Date;
-edit(data: any) {
-  this.showAdd = false;
-  this.showupdate = true;
+  edit(data: any) {
+    this.showAdd = false;
+    this.showupdate = true;
 
+<<<<<<< HEAD
   this.projectObj.id = data._id;
   this.mform.controls['name'].setValue(data.name);
   this.teamlead = data.teamLead;
@@ -99,6 +103,18 @@ edit(data: any) {
   this.mform.controls['expectedEndDate'].setValue(data.expectedEndDate)
   
 }
+=======
+    this.projectObj.id = data._id;
+    this.mform.controls['name'].setValue(data.name);
+    this.teamLead = data.teamLead;
+    //this.sdate = data.startDate
+    //this.mform.controls['startDate'].setValue(data.startDate);
+    this.mform.controls['startDate'].setValue(data.startDate);
+    this.mform.controls['expectedEndDate'].setValue(data.expectedEndDate);
+
+    console.log(this.sdate);
+  }
+>>>>>>> e8d74e36e2e701da04ee9b377cb8723925663a41
 
 
 
