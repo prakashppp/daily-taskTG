@@ -42,7 +42,7 @@
                 <tbody *ngFor="let data of userDataf">
                   <tr>
                     <!-- <td routerLink="/home/con-data/con-child/{{data.Name}}">{{ data.Name }}</td> -->
-                    <td (click)="getEmpName(data.Name)" (click)="selectName(data.Name)" [style.background-color]="isSelected(data.Name) ? 'lightblue' : 'inherit'">{{ data.Name }}</td>
+                    <td class="hand" (click)="getEmpName(data.Name)" (click)="selectName(data.Name)" [style.background-color]="isSelected(data.Name) ? 'lightblue' : 'inherit'">{{ data.Name | titlecase}}</td>
 
                   </tr>
                 </tbody>

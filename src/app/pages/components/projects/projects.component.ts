@@ -77,22 +77,18 @@ export class ProjectsComponent {
   createProject(data: any) {
     this.ps.createProject(data).subscribe((res) => {
       // window.alert('User added successfully');
-      window.alert('added');
+      window.alert(res.message);
       this.mform.reset();
       this.getAll();
     });
   }
 
-<<<<<<< HEAD
   
-=======
->>>>>>> e8d74e36e2e701da04ee9b377cb8723925663a41
   sdate!: Date;
   edit(data: any) {
     this.showAdd = false;
     this.showupdate = true;
 
-<<<<<<< HEAD
   this.projectObj.id = data._id;
   this.mform.controls['name'].setValue(data.name);
   this.teamlead = data.teamLead;
@@ -103,18 +99,6 @@ export class ProjectsComponent {
   this.mform.controls['expectedEndDate'].setValue(data.expectedEndDate)
   
 }
-=======
-    this.projectObj.id = data._id;
-    this.mform.controls['name'].setValue(data.name);
-    this.teamLead = data.teamLead;
-    //this.sdate = data.startDate
-    //this.mform.controls['startDate'].setValue(data.startDate);
-    this.mform.controls['startDate'].setValue(data.startDate);
-    this.mform.controls['expectedEndDate'].setValue(data.expectedEndDate);
-
-    console.log(this.sdate);
-  }
->>>>>>> e8d74e36e2e701da04ee9b377cb8723925663a41
 
 
 
@@ -125,8 +109,8 @@ export class ProjectsComponent {
     this.projectObj.startDate = this.mform.value.startDate;
     this.projectObj.expectedEndDate = this.mform.value.expectedEndDate;
 
-    this.ps.updateProject(this.projectObj, this.projectObj.id).subscribe(() => {
-      window.alert('User Updated');
+    this.ps.updateProject(this.projectObj, this.projectObj.id).subscribe((res:any) => {
+      window.alert(res.message);
       this.getAll();
       this.mform.reset();
     });
@@ -134,8 +118,8 @@ export class ProjectsComponent {
 
   deleteProject(data: any) {
     if (confirm('do you want to delete')) {
-      this.ps.deleteProject(data._id).subscribe(() => {
-        window.alert('Project Deleted');
+      this.ps.deleteProject(data._id).subscribe((res:any) => {
+        window.alert(res.message);
         this.getAll();
       });
     }

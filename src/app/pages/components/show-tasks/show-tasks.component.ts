@@ -15,8 +15,7 @@ export class ShowTasksComponent {
   constructor(
     private api: ApiService,
     private common: CommonService,
-    private us: UserService,
-    
+    private us: UserService
   ) {}
   data: Emp[] = [];
   fdata: Emp[] = [];
@@ -35,7 +34,6 @@ export class ShowTasksComponent {
   arrayText: any;
 
   ngOnInit() {
-   
     this.common.isDisabled.subscribe((res) => {
       this.isDisabled = res;
     });
@@ -44,24 +42,27 @@ export class ShowTasksComponent {
       this.userData = res;
     });
 
-    this.decodeToken(this.dd)
-    this.api.getAll().subscribe((res: any) => {
+    this.decodeToken(this.dd);
+    this.api.getAll().subscribe((ress: any) => {
+      console.log(this.isDisabled);
       if (this.isDisabled == false) {
-        this.data = res;
-        this.fdata = res;
+        this.data = ress;
+        this.fdata = ress;
       } else {
-
         this.us.getAll().subscribe((res: any) => {
           this.userData = res;
-        });
-        this.userf = this.userData.filter((user: any) => {
-          return this.userId == user._id;
-        });
-        this.data = res.filter((daddd: any) => {
-          return daddd.name == this.userf[0].Name;
-        });
-        this.fdata = res.filter((daddd: any) => {
-          return daddd.name == this.userf[0].Name;
+
+          this.userf = this.userData.filter((user: any) => {
+            return this.userId == user._id;
+          });
+
+          this.data = ress.filter((daddd: any) => {
+            return daddd.name == this.userf[0].Name;
+          });
+
+          this.fdata = ress.filter((daddd: any) => {
+            return daddd.name == this.userf[0].Name;
+          });
         });
       }
     });
@@ -69,6 +70,7 @@ export class ShowTasksComponent {
 
   ngDoCheck(): void {
     this.decodeToken(this.dd);
+
     // this.api.getAll().subscribe((res: any) => {
     //   if (this.isDisabled == false) {
     //     this.data = res;
@@ -115,34 +117,32 @@ export class ShowTasksComponent {
     // if(this.nameToSearch){
     //   this.fdata=this.data;
     // }
-    if(!this.nameToSearch && !this.fdate){
-      this.fdata=this.data
-    }
-    else{
-    this.fdata = this.data.filter((item) => {
-      let date = new Date(item.date);
-      let DDate = date.toLocaleDateString(); // Convert date to local string
-      let date2 = new Date(this.fdate);
-      let LDate = date2.toLocaleDateString();
+    if (!this.nameToSearch && !this.fdate) {
+      this.fdata = this.data;
+    } else {
+      this.fdata = this.data.filter((item) => {
+        let date = new Date(item.date);
+        let DDate = date.toLocaleDateString(); // Convert date to local string
+        let date2 = new Date(this.fdate);
+        let LDate = date2.toLocaleDateString();
 
-      if (this.nameToSearch == '') {
-        console.log(LDate.length);
-        return DDate == LDate;
-      } else if (this.nameToSearch.length >= 0 && this.fdate.length <= 0) {
+        if (this.nameToSearch == '') {
+          console.log(LDate.length);
+          return DDate == LDate;
+        } else if (this.nameToSearch.length >= 0 && this.fdate.length <= 0) {
+          return item.name
+            .toLocaleLowerCase()
+            .startsWith(this.nameToSearch.toLocaleLowerCase());
+        } else
           return (
-          item.name.toLocaleLowerCase().startsWith( this.nameToSearch.toLocaleLowerCase())
-        );
-      }
-      else
-        return (
-          (!this.nameToSearch ||
-            item.name
-              .toLowerCase()
-              .startsWith(this.nameToSearch.toLowerCase())) &&
-          (!DDate || LDate === DDate)
-        );
-    });
-  }
+            (!this.nameToSearch ||
+              item.name
+                .toLowerCase()
+                .startsWith(this.nameToSearch.toLowerCase())) &&
+            (!DDate || LDate === DDate)
+          );
+      });
+    }
   }
 
   showAll() {
@@ -156,7 +156,6 @@ export class ShowTasksComponent {
       return filteredArr;
     }
 
-   
     this.ffData = this.data.filter((item) => {
       let date = new Date(item.date);
       let DDate = date.toLocaleDateString();
@@ -166,7 +165,7 @@ export class ShowTasksComponent {
     });
 
     const filteredArray = filterByName(this.userData, this.ffData);
-    
+
     const unuu = filteredArray
       .map((data: any) => {
         return ` ${data.Name} \n`;

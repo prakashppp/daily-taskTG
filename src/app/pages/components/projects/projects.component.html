@@ -49,7 +49,7 @@
           <tbody *ngFor="let data of projectDataf; let i = index" [style.background-color]="i % 2 === 0 ? '#00000011' : 'white'">
             <tr>
               <td>{{ i + 1 }}</td>
-              <td routerLink="/home/emp-projects/{{data.name}}">{{ data.name | titlecase }}</td>
+              <td routerLink="/home/emp-projects/{{data.name}}" class="projectName">{{ data.name | titlecase }}</td>
               <td>{{ data.teamLead | titlecase }}</td>
               <td>{{ data.startDate | date : "dd-MMM-YYYY" }}</td>
               <td>{{ data.expectedEndDate | date : "dd-MMM-YYYY" }}</td>

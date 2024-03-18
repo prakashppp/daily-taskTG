@@ -24,6 +24,9 @@ ui {
   text-align-last: left;
 }
 
+select{
+  cursor: pointer;
+}
 /* @media screen and (min-width: 480) {
   .card {
     width: 15rem;

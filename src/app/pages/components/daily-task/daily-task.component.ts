@@ -38,7 +38,7 @@ export class DailyTaskComponent implements DoCheck {
 
   ngOnInit() {
     this.nForm = this.fb.group({
-      tasks: ['',[Validators.required,Validators.pattern('[a-zA-Z]+[a-zA-Z0-9-&*+-_$#@!()%~^= ]*')]],
+      tasks: ['',[Validators.required,Validators.pattern('[a-zA-Z]+[a-zA-Z0-9-&*+-_$#@!()%~^=\' ]*')]],
       selll:['']
     });
     this.us.getAll().subscribe((res: any) => {

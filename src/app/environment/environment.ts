@@ -1,5 +1,4 @@
 export const environment = {
-<<<<<<< HEAD
     production: false,
      //localUrl:"http://167.99.234.75:3000/"
     //  https://localhost:7050/api/Authorization/authorize
@@ -16,8 +15,3 @@ export const environment = {
    * on performance if an error is thrown.
    */
   // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
-=======
-  production: false,
-  localUrl: 'http://localhost:3000/',
-};
->>>>>>> e8d74e36e2e701da04ee9b377cb8723925663a41

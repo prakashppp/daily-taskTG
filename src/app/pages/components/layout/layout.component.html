@@ -55,36 +55,47 @@
             style="color: white"
           >
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
+              <li class="nav-item" [ngClass]="{'active': activeTab === 'tasks'}" (click)="activeTab = 'tasks'">
                 <a
                   class="nav-link"
                   aria-current="page"
                   routerLink="/home/show-task"
+                  [style.color]="activeTab === 'tasks' ? 'green' : ''"
                   >Tasks</a
                 >
               </li>
-              <li class="nav-item" [class.disabled]="isDisabled">
-                <a class="nav-link" routerLink="/home/users">Employees</a>
+              <li class="nav-item" [class.disabled]="isDisabled" [ngClass]="{'active': activeTab === 'employees'}" (click)="activeTab = 'employees'">
+                <a class="nav-link" routerLink="/home/users" [style.color]="activeTab === 'employees' ? 'green' : ''">Employees</a>
               </li>
-              <li class="nav-item" [class.disabled]="isDisabled">
-                <a class="nav-link" routerLink="/home/project">Projects</a>
-              </li>
-
-              <li class="nav-item" [class.disabled]="isDisabled">
-                <a class="nav-link" routerLink="/home/calender">Calender</a>
+              <li class="nav-item" [class.disabled]="isDisabled" [ngClass]="{'active': activeTab === 'projects'}" (click)="activeTab = 'projects'">
+                <a class="nav-link" routerLink="/home/project" [style.color]="activeTab === 'projects' ? 'green' : ''">Projects</a>
               </li>
 
-              <li class="nav-item" [class.disabled]="isDisabled">
-                <a class="nav-link" routerLink="/home/con-data">Consolidated</a>
+              <li class="nav-item" [class.disabled]="isDisabled" [ngClass]="{'active': activeTab === 'calendar'}" (click)="activeTab = 'calendar'">
+                <a class="nav-link" routerLink="/home/calender" [style.color]="activeTab === 'calendar' ? 'green' : ''">Calendar</a>
+              </li>
+
+              <li class="nav-item" [class.disabled]="isDisabled" [ngClass]="{'active': activeTab === 'consolidated'}" (click)="activeTab = 'consolidated'">
+                <a class="nav-link" routerLink="/home/con-data" [style.color]="activeTab === 'consolidated' ? 'green' : ''">Consolidated</a>
               </li>
             </ul>
-            <button
+            <!-- <button
               class="btn btn-danger logout"
               (click)="logout()"
               routerLink="/login"
             >
               logout
-            </button>
+            </button> -->
+            
+            <div class="loginUser">
+              {{userName}}
+            </div>
+            &nbsp;&nbsp;
+            <i
+              class="bi bi-box-arrow-right"
+              (click)="logout()"
+              routerLink="/login"
+            ></i>
           </div>
         </div>
       </nav>

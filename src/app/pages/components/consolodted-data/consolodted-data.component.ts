@@ -47,7 +47,7 @@ export class ConsolodtedDataComponent {
         this.userDataf = this.userData.filter((user: any) => {
           return user.Project.includes(this.projectData[1].name);
         });
-
+        this.empName=this.userDataf[0].Name
         this.projectName=this.projectData[1].name
 
         this.api.getAll().subscribe((res: any) => {
@@ -78,6 +78,7 @@ export class ConsolodtedDataComponent {
         return user.Project.includes(this.projectName);
     });
 
+    this.empName=this.userDataf[0].Name
     this.api.getAll().subscribe((res: any) => {
       this.taskData = res;
 
