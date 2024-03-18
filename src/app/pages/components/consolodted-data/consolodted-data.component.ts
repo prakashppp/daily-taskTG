@@ -99,7 +99,7 @@ export class ConsolodtedDataComponent {
       this.taskDataf = this.taskData.filter((task: any) => {
         const datee3 = new Date(task.date);
         const date3 = datee3.toLocaleDateString();
-        // console.log(date3);
+       
               
         return datee3 >= datee1 && datee3 <= datee2 && task.name==this.empName && task.projects==this.projectName;
         
@@ -115,8 +115,7 @@ export class ConsolodtedDataComponent {
 
   getEmpName(data: any) {
     this.empName = data;
-    console.log(this.empName)
-    console.log(this.projectName)
+   
     this.taskDataf = this.taskData.filter((task: any) => {
       return task.name == this.empName && task.projects==this.projectName;
     });
