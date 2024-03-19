@@ -41,10 +41,10 @@ ui {
   margin-top: 5px;
 }
 
-.ss{
+ .ss{
 max-height: 68vh; 
 overflow: auto;
-}
+} 
 
 
 
@@ -83,6 +83,9 @@ overflow: auto;
     font-size:0.5rem ;
     max-height: 55vh; 
     overflow: auto;
+  }
+  .searchdate{
+    font-size:0.7rem ;
   }
   /* .content {
     height: 600px;
