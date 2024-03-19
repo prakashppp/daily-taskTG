@@ -37,7 +37,7 @@ export class LayoutComponent {
       let lastName =
         parts[parts.length - 1].charAt(0).toUpperCase() +
         parts[parts.length - 1].slice(1);
-      this.userName = `${firstName} ${lastName}`;
+      this.userName = `${firstName}`;
     });
   }
 

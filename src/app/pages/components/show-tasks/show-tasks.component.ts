@@ -44,7 +44,6 @@ export class ShowTasksComponent {
 
     this.decodeToken(this.dd);
     this.api.getAll().subscribe((ress: any) => {
-      console.log(this.isDisabled);
       if (this.isDisabled == false) {
         this.data = ress;
         this.fdata = ress;

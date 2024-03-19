@@ -116,20 +116,34 @@ body {
   
 }
 
- @media screen and (max-width:400px) {
-  .logout{
+ @media only screen and (max-width:450px) {
+  /* .logout{
     margin-bottom: 10px;
     margin-left:80%;
-  }
+  } */
   .nav-link{
     font-weight: 500;
-    font-size: small;
+    font-size: 15px!important;
     color:black
   }
   .techname{
     height: 7rch;
     width:15rch
   }
+
+  .loginUser{
+    font-size: 15px!important;
+    margin-left: 55%!important;
+    font-weight: 200;
+    margin-bottom: 0!important;
+  }
+
+  .bi{
+    font-size: 20px!important;
+   
+    font-weight: 200;
+  }
+
 } 
 /* @media only screen and (max-width:500px){
     #nav_t{
@@ -140,3 +154,45 @@ body {
       font-size: 20px;
     }
 } */
+
+@media only screen and (max-width:992px) {
+  /* .loginUser{
+    font-size: 20px;
+    margin-left: 80%;
+    font-weight: 200;
+  }
+
+  .bi{
+    font-size: 30px;
+    margin-left: 92%;
+    font-weight: 200;
+  } */
+  .loginUser{
+   
+    margin-left: 80%;
+    font-size: 30px;
+  }
+
+  .bi{
+   
+    font-size: 30px;
+    
+  }
+}
+
+@media only screen and (max-width:1065px) {
+  .nav-link{
+    font-size: 18px;
+    color:black;
+    font-weight: bolder!important;
+  }
+  .loginUser{
+    font-size: 18px;
+    font-weight: 200;
+  }
+
+  .bi{
+    font-size: 20px;
+  
+  }
+}
